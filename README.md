@@ -1,4 +1,4 @@
-= AerospikeCRubyRailsCache
+# AerospikeCRubyRailsCache
 
 Add to gemfile:
 
