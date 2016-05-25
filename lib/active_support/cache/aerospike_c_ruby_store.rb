@@ -43,7 +43,7 @@ module ActiveSupport
 
       def read_entry(key, options)
         if value = internal_read_entry(key, options)
-          value = options[:raw]? ActiveSupport::Cache::Entry.new(value)
+          value = ActiveSupport::Cache::Entry.new(value)
         else
           nil
         end
@@ -52,7 +52,7 @@ module ActiveSupport
       def write_entry(key, entry, options)
         options[:ttl] ||= options[:expires_in] if options[:expires_in]
 
-        value = options[:raw]? entry.value
+        value = entry.value
 
         @client.put(as_key(key, options), {options[:bin] => value}, options)
       end
